@@ -3,14 +3,14 @@
 namespace backend\controllers;
 
 use Yii;
-use common\models\feed;
-use common\models\feedSearch;
+use common\models\Feed;
+use common\models\FeedSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * FeedController implements the CRUD actions for feed model.
+ * FeedController implements the CRUD actions for Feed model.
  */
 class FeedController extends Controller
 {
@@ -30,12 +30,12 @@ class FeedController extends Controller
     }
 
     /**
-     * Lists all feed models.
+     * Lists all Feed models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new feedSearch();
+        $searchModel = new FeedSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class FeedController extends Controller
     }
 
     /**
-     * Displays a single feed model.
+     * Displays a single Feed model.
      * @param integer $id
      * @return mixed
      */
@@ -57,13 +57,13 @@ class FeedController extends Controller
     }
 
     /**
-     * Creates a new feed model.
+     * Creates a new Feed model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new feed();
+        $model = new Feed();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -75,7 +75,7 @@ class FeedController extends Controller
     }
 
     /**
-     * Updates an existing feed model.
+     * Updates an existing Feed model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -94,7 +94,7 @@ class FeedController extends Controller
     }
 
     /**
-     * Deletes an existing feed model.
+     * Deletes an existing Feed model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -107,15 +107,15 @@ class FeedController extends Controller
     }
 
     /**
-     * Finds the feed model based on its primary key value.
+     * Finds the Feed model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return feed the loaded model
+     * @return Feed the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = feed::findOne($id)) !== null) {
+        if (($model = Feed::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

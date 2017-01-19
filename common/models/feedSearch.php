@@ -5,12 +5,12 @@ namespace common\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\feed;
+use common\models\Feed;
 
 /**
- * feedSearch represents the model behind the search form about `common\models\feed`.
+ * FeedSearch represents the model behind the search form about `common\models\Feed`.
  */
-class feedSearch extends feed
+class FeedSearch extends Feed
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class feedSearch extends feed
     public function rules()
     {
         return [
-            [['id', 'source_id', 'link'], 'integer'],
-            [['name', 'description'], 'safe'],
+            [['id', 'source_id'], 'integer'],
+            [['name', 'description', 'link', 'status'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class feedSearch extends feed
      */
     public function search($params)
     {
-        $query = feed::find();
+        $query = Feed::find();
 
         // add conditions that should always apply here
 
@@ -61,11 +61,12 @@ class feedSearch extends feed
         $query->andFilterWhere([
             'id' => $this->id,
             'source_id' => $this->source_id,
-            'link' => $this->link,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'description', $this->description]);
+            ->andFilterWhere(['like', 'description', $this->description])
+            ->andFilterWhere(['like', 'link', $this->link])
+            ->andFilterWhere(['like', 'status', $this->status]);
 
         return $dataProvider;
     }

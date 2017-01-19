@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\source */
+/* @var $model common\models\Source */
 
 $this->title = 'Update Source: ' . $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Sources', 'url' => ['index']];

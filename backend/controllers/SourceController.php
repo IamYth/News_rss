@@ -3,14 +3,14 @@
 namespace backend\controllers;
 
 use Yii;
-use common\models\source;
-use common\models\sourceSearch;
+use common\models\Source;
+use common\models\SourceSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * SourceController implements the CRUD actions for source model.
+ * SourceController implements the CRUD actions for Source model.
  */
 class SourceController extends Controller
 {
@@ -30,12 +30,12 @@ class SourceController extends Controller
     }
 
     /**
-     * Lists all source models.
+     * Lists all Source models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new sourceSearch();
+        $searchModel = new SourceSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class SourceController extends Controller
     }
 
     /**
-     * Displays a single source model.
+     * Displays a single Source model.
      * @param integer $id
      * @return mixed
      */
@@ -57,13 +57,13 @@ class SourceController extends Controller
     }
 
     /**
-     * Creates a new source model.
+     * Creates a new Source model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new source();
+        $model = new Source();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -75,7 +75,7 @@ class SourceController extends Controller
     }
 
     /**
-     * Updates an existing source model.
+     * Updates an existing Source model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -94,7 +94,7 @@ class SourceController extends Controller
     }
 
     /**
-     * Deletes an existing source model.
+     * Deletes an existing Source model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -107,15 +107,15 @@ class SourceController extends Controller
     }
 
     /**
-     * Finds the source model based on its primary key value.
+     * Finds the Source model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return source the loaded model
+     * @return Source the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = source::findOne($id)) !== null) {
+        if (($model = Source::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

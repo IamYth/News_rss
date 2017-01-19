@@ -5,12 +5,12 @@ namespace common\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\source;
+use common\models\Source;
 
 /**
- * sourceSearch represents the model behind the search form about `common\models\source`.
+ * SourceSearch represents the model behind the search form about `common\models\Source`.
  */
-class sourceSearch extends source
+class SourceSearch extends Source
 {
     /**
      * @inheritdoc
@@ -18,7 +18,8 @@ class sourceSearch extends source
     public function rules()
     {
         return [
-            [['id', 'link', 'logo'], 'integer'],
+            [['id'], 'integer'],
+            [['link', 'logo'], 'safe'],
         ];
     }
 
@@ -40,7 +41,7 @@ class sourceSearch extends source
      */
     public function search($params)
     {
-        $query = source::find();
+        $query = Source::find();
 
         // add conditions that should always apply here
 
@@ -59,9 +60,10 @@ class sourceSearch extends source
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'link' => $this->link,
-            'logo' => $this->logo,
         ]);
+
+        $query->andFilterWhere(['like', 'link', $this->link])
+            ->andFilterWhere(['like', 'logo', $this->logo]);
 
         return $dataProvider;
     }

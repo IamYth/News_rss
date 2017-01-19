@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\feed */
+/* @var $model common\models\Feed */
 
 $this->title = 'Update Feed: ' . $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Feeds', 'url' => ['index']];

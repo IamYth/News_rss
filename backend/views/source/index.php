@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel common\models\sourceSearch */
+/* @var $searchModel common\models\SourceSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Sources';
@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'link',
-            'logo',
+            'logo:image',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

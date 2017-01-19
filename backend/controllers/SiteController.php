@@ -6,6 +6,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
+use common\models\Feed;
 
 /**
  * Site controller
@@ -60,7 +61,8 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $feed = Feed::getFeed();
+        return $this->render('index', ['name' => $feed]);
     }
 
     /**
@@ -94,5 +96,10 @@ class SiteController extends Controller
         Yii::$app->user->logout();
 
         return $this->goHome();
+    }
+
+    public function actionRss()
+    {
+        return $this->render('rss');
     }
 }

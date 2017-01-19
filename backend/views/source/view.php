@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\source */
+/* @var $model common\models\Source */
 
 $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Sources', 'url' => ['index']];
@@ -30,7 +30,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'link',
-            'logo',
+            [
+            'attribute' => 'logo',
+            'format' => 'image',
+            ]
+            //'logo',
         ],
     ]) ?>
 

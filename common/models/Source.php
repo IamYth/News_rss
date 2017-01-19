@@ -8,8 +8,8 @@ use Yii;
  * This is the model class for table "source".
  *
  * @property integer $id
- * @property integer $link
- * @property integer $logo
+ * @property string $link
+ * @property string $logo
  *
  * @property Feed[] $feeds
  */
@@ -29,7 +29,7 @@ class Source extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['link', 'logo'], 'integer'],
+            [['link', 'logo'], 'string', 'max' => 255],
         ];
     }
 
@@ -51,5 +51,11 @@ class Source extends \yii\db\ActiveRecord
     public function getFeeds()
     {
         return $this->hasMany(Feed::className(), ['source_id' => 'id']);
+    }
+
+    public function getUrl()
+    {
+        $source = self::find()->all();
+        return $source;
     }
 }

@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\feed */
+/* @var $model common\models\Feed */
 
 $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Feeds', 'url' => ['index']];
@@ -31,8 +31,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'source_id',
             'name',
-            'description:ntext',
+            'description',
             'link',
+            'status',
         ],
     ]) ?>
 
